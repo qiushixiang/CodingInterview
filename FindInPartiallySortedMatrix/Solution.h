@@ -5,7 +5,7 @@ using namespace std;
 class Solution
 {
 public:
-	bool Find(int target, vector<vector<int> > array);
+	bool FindInPartiallySortedMatrix(int target, vector<vector<int> > array);
 	Solution();
 	~Solution();
 };

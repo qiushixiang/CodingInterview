@@ -11,7 +11,7 @@ Solution::~Solution()
 {
 }
 
-bool Solution::Find(int target, vector<vector<int> > array) {
+bool Solution::FindInPartiallySortedMatrix(int target, vector<vector<int> > array) {
 	int rowLength = array.size();
 	int colLength;
 
