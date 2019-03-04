@@ -70,3 +70,45 @@ bool Solution::DuplicationInArray(int numbers[], int length, int* duplication)
 
 	return false;
 }
+
+void Solution::ReplaceSpaces(char *str, int length)
+{
+	if (str == nullptr || length == 0 || str[0] == '\0')
+		return;
+
+	int originalLength = 0, spacesNumber = 0;
+
+	while (str[originalLength] != '\0')
+	{
+		if (str[originalLength] == ' ')
+		{
+			spacesNumber++;
+		}
+		originalLength++;
+	}
+
+	int newLength = originalLength + spacesNumber * 2;
+	if (newLength > length)
+	{
+		return;
+	}
+
+	int pOriginal =  originalLength;
+	int pNew = newLength;
+
+	while (pOriginal >= 0 && pNew > pOriginal)
+	{
+		if (str[pOriginal] == ' ')
+		{
+			str[pNew--] = '0';
+			str[pNew--] = '2';
+			str[pNew--] = '%';
+		}
+		else
+		{
+			str[pNew--] = str[pOriginal];
+		}
+
+		pOriginal--;
+	}
+}

@@ -59,29 +59,76 @@ namespace CodingInterviewUnitTest
 			Solution solution;
 
 			int duplication = -1;
-			bool resault = false;
-			resault = solution.DuplicationInArray(test_array_0, 7, &duplication);
-			Assert::AreEqual(true, resault);
+			bool result = false;
+			result = solution.DuplicationInArray(test_array_0, 7, &duplication);
+			Assert::AreEqual(true, result);
 			Assert::AreEqual(2, duplication);
 
-			resault = solution.DuplicationInArray(test_array_1, 7, &duplication);
-			Assert::AreEqual(true, resault);
+			result = solution.DuplicationInArray(test_array_1, 7, &duplication);
+			Assert::AreEqual(true, result);
 			Assert::AreEqual(3, duplication);
 
-			resault = solution.DuplicationInArray(test_array_2, 7, &duplication);
-			Assert::AreEqual(false, resault);
+			result = solution.DuplicationInArray(test_array_2, 7, &duplication);
+			Assert::AreEqual(false, result);
 
-			resault = solution.DuplicationInArray(test_array_3, 7, &duplication);
-			Assert::AreEqual(false, resault);
+			result = solution.DuplicationInArray(test_array_3, 7, &duplication);
+			Assert::AreEqual(false, result);
 
-			resault = solution.DuplicationInArray(nullptr, 7, &duplication);
-			Assert::AreEqual(false, resault);
+			result = solution.DuplicationInArray(nullptr, 7, &duplication);
+			Assert::AreEqual(false, result);
 
-			resault = solution.DuplicationInArray(test_array_0, 0, &duplication);
-			Assert::AreEqual(false, resault);
+			result = solution.DuplicationInArray(test_array_0, 0, &duplication);
+			Assert::AreEqual(false, result);
 
-			resault = solution.DuplicationInArray(test_array_0, 1, &duplication);
-			Assert::AreEqual(false, resault);
+			result = solution.DuplicationInArray(test_array_0, 1, &duplication);
+			Assert::AreEqual(false, result);
+		}
+
+		TEST_METHOD(ReplaceSpaces)
+		{
+			Solution solution;
+
+			char test_str_0[100] = "We are happy.";
+			solution.ReplaceSpaces(test_str_0, 100);
+			Assert::AreEqual(0, strcmp("We%20are%20happy.", test_str_0));
+
+			char test_str_1[100] = "Wearehappy.";
+			solution.ReplaceSpaces(test_str_1, 100);
+			Assert::AreEqual(0, strcmp("Wearehappy.", test_str_1));
+
+			char test_str_2[100] = "We    are happy.";
+			solution.ReplaceSpaces(test_str_2, 100);
+			Assert::AreEqual(0, strcmp("We%20%20%20%20are%20happy.", test_str_2));
+
+			char test_str_3[100] = "We are happy.   ";
+			solution.ReplaceSpaces(test_str_3, 100);
+			Assert::AreEqual(0, strcmp("We%20are%20happy.%20%20%20", test_str_3));
+
+			char test_str_4[100] = "   We are happy.";
+			solution.ReplaceSpaces(test_str_4, 100);
+			Assert::AreEqual(0, strcmp("%20%20%20We%20are%20happy.", test_str_4));
+
+			char* test_str_5 = nullptr;
+			solution.ReplaceSpaces(test_str_5, 100);
+			Assert::AreEqual(nullptr, test_str_5);
+
+			char test_str_9[100] = "We are happy.";
+			solution.ReplaceSpaces(test_str_9, 0);
+			Assert::AreEqual(0, strcmp("We are happy.", test_str_9));
+
+			char test_str_6[100] = "    ";
+			solution.ReplaceSpaces(test_str_6, 100);
+			Assert::AreEqual(0, strcmp("%20%20%20%20", test_str_6));
+
+			char test_str_7[100] = { '\0' };
+			char test_str_8[100] = { '\0' };
+			solution.ReplaceSpaces(test_str_7, 100);
+			Assert::AreEqual(0, strcmp(test_str_8, test_str_7));
+
+			char test_str_10[100] = "We are happy.";
+			solution.ReplaceSpaces(test_str_10, 14);
+			Assert::AreEqual(0, strcmp("We are happy.", test_str_10));
+
 		}
 
 	};
