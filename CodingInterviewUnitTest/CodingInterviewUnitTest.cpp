@@ -131,5 +131,42 @@ namespace CodingInterviewUnitTest
 
 		}
 
+		TEST_METHOD(PrintListInReversedOrder)
+		{
+			Solution solution;
+
+			ListNode* test_head_0 = nullptr;
+			ListNode* rear = nullptr;
+
+			for (auto i : { 1,2,3,4,5 })
+			{
+				auto newNode = new ListNode(i);
+				newNode->next = nullptr;
+
+				if (test_head_0 == nullptr)
+				{
+					test_head_0 = newNode;
+				}
+				else
+				{
+					rear->next = newNode;
+				}
+				rear = newNode;
+			}
+
+			vector<int> expect_result0 = { 5,4,3,2,1 };
+			auto result = solution.PrintListInReversedOrder(test_head_0);
+			for (int i = 0; i < 5; i++)
+			{
+				Assert::AreEqual(expect_result0[i], result[i]);
+			}
+
+			Assert::AreEqual(true, solution.PrintListInReversedOrder(nullptr).empty());
+
+			ListNode* test_head_1 = new ListNode(2);
+			Assert::AreEqual((size_t)1, solution.PrintListInReversedOrder(test_head_1).size());
+			Assert::AreEqual(2, solution.PrintListInReversedOrder(test_head_1)[0]);
+		}
+
 	};
 }

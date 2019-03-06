@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Solution.h"
-
+#include <stack>
 
 Solution::Solution()
 {
@@ -111,4 +111,25 @@ void Solution::ReplaceSpaces(char *str, int length)
 
 		pOriginal--;
 	}
+}
+
+vector<int> Solution::PrintListInReversedOrder(ListNode* head)
+{
+	stack<ListNode*> nodes;
+	vector<int> result;
+
+	ListNode* node = head;
+	while (node != nullptr)
+	{
+		nodes.push(node);
+		node = node->next;
+	}
+
+	while (!nodes.empty())
+	{
+		result.push_back(nodes.top()->val);
+		nodes.pop();
+	}
+
+	return result;
 }
